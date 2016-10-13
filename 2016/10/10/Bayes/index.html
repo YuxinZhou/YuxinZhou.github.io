@@ -3,18 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>测试 | Yuxin Zhou&#39;s Blog</title>
+  <title>文本分类与朴素贝叶斯介绍 | Yuxin Zhou&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘要">
+  <meta name="description" content="本文是对　Introduction to Information Retrieval第13章部分-Text classification and Naive Bayes 的阅读笔记. 同时参考了斯坦福大学自然语言处理第六课“文本分类（Text Classification）”这篇博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试">
-<meta property="og:url" content="https://YuxinZhou.github.io.git/2016/09/26/test/index.html">
+<meta property="og:title" content="文本分类与朴素贝叶斯介绍">
+<meta property="og:url" content="https://YuxinZhou.github.io.git/2016/10/10/Bayes/index.html">
 <meta property="og:site_name" content="Yuxin Zhou's Blog">
-<meta property="og:description" content="摘要">
-<meta property="og:updated_time" content="2016-10-10T15:20:41.200Z">
+<meta property="og:description" content="本文是对　Introduction to Information Retrieval第13章部分-Text classification and Naive Bayes 的阅读笔记. 同时参考了斯坦福大学自然语言处理第六课“文本分类（Text Classification）”这篇博客">
+<meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes1.png">
+<meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes2.png">
+<meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes3.png">
+<meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes4.png">
+<meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes5.png">
+<meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes6.png">
+<meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes7.png">
+<meta property="og:updated_time" content="2016-10-13T08:32:24.643Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试">
-<meta name="twitter:description" content="摘要">
+<meta name="twitter:title" content="文本分类与朴素贝叶斯介绍">
+<meta name="twitter:description" content="本文是对　Introduction to Information Retrieval第13章部分-Text classification and Naive Bayes 的阅读笔记. 同时参考了斯坦福大学自然语言处理第六课“文本分类（Text Classification）”这篇博客">
+<meta name="twitter:image" content="https://YuxinZhou.github.io.git/image/bayes1.png">
   
     <link rel="alternative" href="/atom.xml" title="Yuxin Zhou&#39;s Blog" type="application/atom+xml">
   
@@ -171,11 +179,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Bayes" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/26/test/" class="article-date">
-      <time datetime="2016-09-26T09:08:33.000Z" itemprop="datePublished">2016-09-26</time>
+      <a href="/2016/10/10/Bayes/" class="article-date">
+      <time datetime="2016-10-10T07:18:46.000Z" itemprop="datePublished">2016-10-10</time>
 </a>
     </div>
   
@@ -188,7 +196,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      测试
+      文本分类与朴素贝叶斯介绍
     </h1>
   
 
@@ -197,13 +205,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Blog-一书/">Blog　一书</a>
+    <a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Classification/">Classification</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Information-Retrieval/">Information Retrieval</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -213,25 +221,34 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>摘要<br><a id="more"></a></p>
-<h2 id="区块引用-Blockquotes"><a href="#区块引用-Blockquotes" class="headerlink" title="区块引用 Blockquotes"></a>区块引用 Blockquotes</h2><blockquote>
-<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.<br>Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
-<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse<br>id sem consectetuer libero luctus adipiscing.</p>
-</blockquote>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><ul>
-<li>Red</li>
-<li>Green</li>
-<li>Blue<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3></li>
+        <p>本文是对　<a href="http://nlp.stanford.edu/IR-book/pdf/13bayes.pdf" target="_blank" rel="external">Introduction to Information Retrieval第13章部分-Text classification and Naive Bayes</a> 的阅读笔记. 同时参考了<a href="http://52opencourse.com/222/%E6%96%AF%E5%9D%A6%E7%A6%8F%E5%A4%A7%E5%AD%A6%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%AC%E5%85%AD%E8%AF%BE-%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%EF%BC%88text-classification%EF%BC%89" target="_blank" rel="external">斯坦福大学自然语言处理第六课“文本分类（Text Classification）”</a>这篇博客<br><a id="more"></a></p>
+<h2 id="文本分类"><a href="#文本分类" class="headerlink" title="文本分类"></a>文本分类</h2><p><strong>分类技术(Classification)</strong>，顾名思义，就是按照预定义的类别,为数据集合中的数据记录进行自动分类标记的过程．当输入为一条待分类的记录 r 和一组固定的类别集合 C = {C 1 , C 2 , … , C j }时,分类技术对应的输出为记录 r 的预测类别 C i．常见的分类任务有：</p>
+<ul>
+<li>spam detection 垃圾过滤</li>
+<li>sentiment detection 情感分析</li>
+<li>personal email sorting　邮件分类</li>
+<li>topic-specific or vertical search 面向主题的搜索</li>
 </ul>
+<h2 id="分类问题的描述"><a href="#分类问题的描述" class="headerlink" title="分类问题的描述"></a>分类问题的描述</h2><p>我们用小写的字母来表示某个具体的文档或类别：用ｄ表示一个文档，用ｃ表示一个类别．对应的，我们用大写的字母表示文档或这类别的集合：用Ｘ表示所有文档的集合，Ｃ表示所有类别的集合，Ｄ表示训练集．</p>
+<p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><br>在训练集Ｄ中，包含了一系列已经被分类的文档＜d,c＞，其中\(＜d,c＞\in X \times C\). 比如＜d,c＞=＜Beijing joins the World Trade Organization, China＞</p>
+<p>在分类问题中，我们目标是得到一个<strong>分类函数</strong>(classificaiton function),<strong>y</strong>. 从而利用这个ｙ函数，将文档映射到对应的类别里：<strong>y:X-&gt;C</strong>.这个分类器ｙ的参数需要通过对训练集的”学习”(learning)得到. 当文档的标签由人为定义, 训练集由人工标注的时候，我们称其为<strong>有监督的学习</strong>.</p>
+<h2 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h2><p>我们介绍的第一个有监督的学习方法是<strong>朴素贝叶斯模型</strong>(Naive Bayes),号称”数据挖掘十大经典算法”之一, 有着简单直接的理论基础.</p>
+<p>其名称中,”贝叶斯”指的是贝叶斯定理, 即<strong>后验概率</strong>正比于<strong>先验概率</strong>乘以<strong>条件概率</strong>. “朴素”二字的涵义是,模型中对条件概率分布坐了条件独立假设–”朴素”得假设各个文档特征(词Xi)在特定类别下,出现是概率是相互独立的.</p>
+<h3 id="一-分类过程"><a href="#一-分类过程" class="headerlink" title="(一) 分类过程"></a>(一) 分类过程</h3><p>P(c|d)表示文档d属于某个类c的概率,则分类的过程等价于求c_MAP的过程,如下:<br><img src="/image/bayes1.png" alt="img"><br>各个步骤说明如下:</p>
 <ol>
-<li>Bird</li>
-<li>McHale</li>
-<li>Parish</li>
+<li>c_MAP即使得后验概率P(c|d)的类别</li>
+<li>根据贝叶斯定理,后验概率P(c|d)转化为求先验概率P(c)和条件概率P(d|c)的问题</li>
+<li>去分母</li>
+<li>引入特征值</li>
 </ol>
-<h2 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h2><h3 id="整段代码"><a href="#整段代码" class="headerlink" title="整段代码"></a>整段代码</h3><figure class="highlight js"><figcaption><span>Javascript Array Syntax</span><a href="http://j.mp/pPUUmW" target="_blank" rel="external">MDN Documentation</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = <span class="keyword">new</span> <span class="built_in">Array</span>(arrayLength);</div><div class="line"><span class="keyword">var</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(element0, element1, ..., elementN);</div></pre></td></tr></table></figure>
-<h3 id="段内代码"><a href="#段内代码" class="headerlink" title="段内代码"></a>段内代码</h3><p>Use the <code>printf()</code> function.</p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>This is <a href="http://example.com/" title="Title" target="_blank" rel="external">an example</a> inline link.</p>
-<p><a href="http://example.net/" target="_blank" rel="external">This link</a> has no title attribute.</p>
+<p>根据条件独立假设有:<br><img src="/image/bayes2.png" alt="img"></p>
+<h3 id="二-学习的过程"><a href="#二-学习的过程" class="headerlink" title="(二)学习的过程"></a>(二)学习的过程</h3><p>在对新文档预测之前，需要先学习朴素贝叶斯模型，或称模型的参数估计。我们面对的主要任务就是估计p(c)和p(x|c)。最直接的方法就是在训练语料库基础上，用极大似然估计法（maximum likelihood estimates）估计相应的概率。</p>
+<p>先验概率p(c)的极大似然估计是: <strong>属于c_j的文档数, 占所有文档书的比例</strong>, 即:<br><img src="/image/bayes3.png" alt="img"></p>
+<p>根据条件概率p(x|c)的估计方法不同,又分为多项式模型和伯努利模型</p>
+<h4 id="多项式模型"><a href="#多项式模型" class="headerlink" title="多项式模型:"></a>多项式模型:</h4><p>多项式模型考察<strong>关键词出现的频率</strong>, 特征是关键词,值是单词出现的次数. 条件概率p(x|c)的极大似然估计是:<strong>c类中所有文档里面关键词w出现的次数/c类中所有文档的总词数</strong></p>
+<h4 id="伯努利模型"><a href="#伯努利模型" class="headerlink" title="伯努利模型:"></a>伯努利模型:</h4><p>伯努利模型考察<strong>关键词在各个文档中是否出现</strong>, 条件概率p(x|c)的极大似然估计是:<strong>c类中出现关键词w的文档数/c类中总共的文档数</strong>. 所以在伯努利模型中,关键词w在某一文档d中一旦出现,则出现1次还是出现10次的对分类结果没有影响. </p>
+<h4 id="平滑"><a href="#平滑" class="headerlink" title="平滑"></a>平滑</h4><p><img src="/image/bayes4.png" alt="img"></p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>这里使用书上的两个例子,来比较多项式模型和伯努利模型的异同.<br>问题描述:<br><img src="/image/bayes5.png" alt="img"><br>多项式模型:(其中+6为平滑. 6个关键词V={Chinese,Beijing,Shanghai,Macco,Tokyo,Japan})<br><img src="/image/bayes6.png" alt="img"><br>伯努利模型:(其中+2为平滑. 2种状态{出现x/不出现x}<br><img src="/image/bayes7.png" alt="img"></p>
 
       
     </div>
@@ -240,13 +257,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/09/26/test/">测试</a></p>
+        <p><span>本文标题:</span><a href="/2016/10/10/Bayes/">文本分类与朴素贝叶斯介绍</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Yuxin Zhou 的个人博客">Yuxin Zhou</a></p>
-        <p><span>发布时间:</span>2016年09月26日 - 17时08分</p>
-        <p><span>最后更新:</span>2016年10月10日 - 23时20分</p>
+        <p><span>发布时间:</span>2016年10月10日 - 15时18分</p>
+        <p><span>最后更新:</span>2016年10月13日 - 16时32分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/09/26/test/" title="测试">https://YuxinZhou.github.io.git/2016/09/26/test/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://YuxinZhou.github.io.git/2016/09/26/test/　　作者: Yuxin Zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/10/Bayes/" title="文本分类与朴素贝叶斯介绍">https://YuxinZhou.github.io.git/2016/10/10/Bayes/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://YuxinZhou.github.io.git/2016/10/10/Bayes/　　作者: Yuxin Zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -259,15 +276,11 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/10/10/Bayes/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          文本分类与朴素贝叶斯介绍
-        
-      </div>
-    </a>
   
+    <a href="/2016/09/26/test/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">测试</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -276,7 +289,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#区块引用-Blockquotes"><span class="toc-number">1.</span> <span class="toc-text">区块引用 Blockquotes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表"><span class="toc-number">2.</span> <span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#无序列表"><span class="toc-number">2.1.</span> <span class="toc-text">无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有序列表"><span class="toc-number">2.2.</span> <span class="toc-text">有序列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码区块"><span class="toc-number">3.</span> <span class="toc-text">代码区块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#整段代码"><span class="toc-number">3.1.</span> <span class="toc-text">整段代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#段内代码"><span class="toc-number">3.2.</span> <span class="toc-text">段内代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链接"><span class="toc-number">4.</span> <span class="toc-text">链接</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文本分类"><span class="toc-number">1.</span> <span class="toc-text">文本分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类问题的描述"><span class="toc-number">2.</span> <span class="toc-text">分类问题的描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#朴素贝叶斯分类器"><span class="toc-number">3.</span> <span class="toc-text">朴素贝叶斯分类器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-分类过程"><span class="toc-number">3.1.</span> <span class="toc-text">(一) 分类过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-学习的过程"><span class="toc-number">3.2.</span> <span class="toc-text">(二)学习的过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#多项式模型"><span class="toc-number">3.2.1.</span> <span class="toc-text">多项式模型:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#伯努利模型"><span class="toc-number">3.2.2.</span> <span class="toc-text">伯努利模型:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#平滑"><span class="toc-number">3.2.3.</span> <span class="toc-text">平滑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#举例"><span class="toc-number">4.</span> <span class="toc-text">举例</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -324,7 +337,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/09/26/test/" data-title="测试" data-url="https://YuxinZhou.github.io.git/2016/09/26/test/"></div>
+    <div class="ds-thread" data-thread-key="2016/10/10/Bayes/" data-title="文本分类与朴素贝叶斯介绍" data-url="https://YuxinZhou.github.io.git/2016/10/10/Bayes/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -347,13 +360,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/10/10/Bayes/" title="上一篇: 文本分类与朴素贝叶斯介绍">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/09/26/test/" title="下一篇: 测试">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Bayes/">文本分类与朴素贝叶斯介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/26/test/">测试</a></li></ul>
