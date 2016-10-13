@@ -13,12 +13,11 @@
 <meta property="og:description" content="本文是对　Introduction to Information Retrieval第13章部分-Text classification and Naive Bayes 的阅读笔记. 同时参考了斯坦福大学自然语言处理第六课“文本分类（Text Classification）”这篇博客">
 <meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes1.png">
 <meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes2.png">
-<meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes3.png">
 <meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes4.png">
 <meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes5.png">
 <meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes6.png">
 <meta property="og:image" content="https://YuxinZhou.github.io.git/image/bayes7.png">
-<meta property="og:updated_time" content="2016-10-13T08:32:24.643Z">
+<meta property="og:updated_time" content="2016-10-13T09:05:21.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文本分类与朴素贝叶斯介绍">
 <meta name="twitter:description" content="本文是对　Introduction to Information Retrieval第13章部分-Text classification and Naive Bayes 的阅读笔记. 同时参考了斯坦福大学自然语言处理第六课“文本分类（Text Classification）”这篇博客">
@@ -239,11 +238,11 @@
 <li>c_MAP即使得后验概率P(c|d)的类别</li>
 <li>根据贝叶斯定理,后验概率P(c|d)转化为求先验概率P(c)和条件概率P(d|c)的问题</li>
 <li>去分母</li>
-<li>引入特征值</li>
+<li>引入特征值,这里的特征是关键词</li>
 </ol>
 <p>根据条件独立假设有:<br><img src="/image/bayes2.png" alt="img"></p>
 <h3 id="二-学习的过程"><a href="#二-学习的过程" class="headerlink" title="(二)学习的过程"></a>(二)学习的过程</h3><p>在对新文档预测之前，需要先学习朴素贝叶斯模型，或称模型的参数估计。我们面对的主要任务就是估计p(c)和p(x|c)。最直接的方法就是在训练语料库基础上，用极大似然估计法（maximum likelihood estimates）估计相应的概率。</p>
-<p>先验概率p(c)的极大似然估计是: <strong>属于c_j的文档数, 占所有文档书的比例</strong>, 即:<br><img src="/image/bayes3.png" alt="img"></p>
+<p>先验概率p(c)的极大似然估计是: <strong>属于c_j的文档数, 占所有文档书的比例</strong></p>
 <p>根据条件概率p(x|c)的估计方法不同,又分为多项式模型和伯努利模型</p>
 <h4 id="多项式模型"><a href="#多项式模型" class="headerlink" title="多项式模型:"></a>多项式模型:</h4><p>多项式模型考察<strong>关键词出现的频率</strong>, 特征是关键词,值是单词出现的次数. 条件概率p(x|c)的极大似然估计是:<strong>c类中所有文档里面关键词w出现的次数/c类中所有文档的总词数</strong></p>
 <h4 id="伯努利模型"><a href="#伯努利模型" class="headerlink" title="伯努利模型:"></a>伯努利模型:</h4><p>伯努利模型考察<strong>关键词在各个文档中是否出现</strong>, 条件概率p(x|c)的极大似然估计是:<strong>c类中出现关键词w的文档数/c类中总共的文档数</strong>. 所以在伯努利模型中,关键词w在某一文档d中一旦出现,则出现1次还是出现10次的对分类结果没有影响. </p>
@@ -260,7 +259,7 @@
         <p><span>本文标题:</span><a href="/2016/10/10/Bayes/">文本分类与朴素贝叶斯介绍</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Yuxin Zhou 的个人博客">Yuxin Zhou</a></p>
         <p><span>发布时间:</span>2016年10月10日 - 15时18分</p>
-        <p><span>最后更新:</span>2016年10月13日 - 16时32分</p>
+        <p><span>最后更新:</span>2016年10月13日 - 17时05分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/10/Bayes/" title="文本分类与朴素贝叶斯介绍">https://YuxinZhou.github.io.git/2016/10/10/Bayes/</a>
             <span class="copy-path" data-clipboard-text="原文: https://YuxinZhou.github.io.git/2016/10/10/Bayes/　　作者: Yuxin Zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
